@@ -3,15 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Translator</title>
+    <title>🌎 Real-Time Translator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>🌎 Translator</h1>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">🌎 Real-Time Translator</h1>
+            <p class="subtitle">Speak in any language • Get instant translation • Listen to results</p>
+        </div>
 
-    <form action="/translate" method="post">
-        <label for="text">Enter text:</label><br>
-        <textarea id="text" name="text" rows="4" cols="50"></textarea><br><br>
-        <button type="submit">Translate</button>
-    </form>
+        <div class="controls">
+            <button id="startBtn" class="btn btn-primary">🎤 Start Listening</button>
+            <button id="stopBtn" class="btn btn-secondary" disabled>⏹ Stop Recording</button>
+        </div>
+
+        <div class="text-section">
+            <div class="text-label">📝 Original Text
+                <span class="status-indicator status-idle" id="transcriptStatus"></span>
+            </div>
+            <textarea id="transcript" class="textarea readonly" readonly placeholder="Your speech will appear here..."></textarea>
+        </div>
+
+        <div class="text-section">
+            <div class="text-label">🇮🇳 Hindi Translation
+                <span class="status-indicator status-idle" id="hindiStatus"></span>
+            </div>
+            <textarea id="hindiTranslation" class="textarea readonly" readonly placeholder="Hindi translation will appear here..."></textarea>
+        </div>
+
+        <div class="text-section">
+            <div class="text-label">🇪🇸 Spanish Translation
+                <span class="status-indicator status-idle" id="spanishStatus"></span>
+            </div>
+            <textarea id="spanishTranslation" class="textarea readonly" readonly placeholder="Spanish translation will appear here..."></textarea>
+        </div>
+
+        <div class="controls">
+            <button id="speakBtn" class="btn btn-accent" disabled>🔊 Speak Translation</button>
+        </div>
+
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </div>
 </body>
 </html>
